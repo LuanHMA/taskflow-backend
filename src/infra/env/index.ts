@@ -1,9 +1,9 @@
 import z from "zod";
+import "dotenv/config"
 
 const envSchema = z.object({
-    PORT: z.coerce.number("Formato inválido"),
-    JWT_SCRET: z.string("Formato inválido"),
-    JWT_REFRESH_SECRET: z.string("Formato inválido"),
+    PORT: z.string("Formato inválido"),
+    JWT_SECRET: z.string("Formato inválido"),
 })
 
 const parse = envSchema.safeParse(process.env)
