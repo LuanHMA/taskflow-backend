@@ -15,3 +15,6 @@ app.register(jwt, {
     secret: env.JWT_SECRET,
 })
 
+app.get("/ping", async () => {
+    return { status: "RODANDO" }
+})
