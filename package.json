@@ -1,0 +1,21 @@
+{
+  "name": "taskflow-backend",
+  "version": "1.0.0",
+  "description": "Aplicação fullstack moderna desenvolvida com foco em aprender autenticação e autorização utilizando JWT + OAuth em uma arquitetura profissional baseada em Next.js e Node.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuanHMA/taskflow-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LuanHMA/taskflow-backend/issues"
+  },
+  "homepage": "https://github.com/LuanHMA/taskflow-backend#readme"
+}
