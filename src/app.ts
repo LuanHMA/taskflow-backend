@@ -7,8 +7,8 @@ import { env } from "./infra/env";
 export const app = fastify()
 
 app.register(cors, {
-    origin: "*",
-    credentials: true
+    origin: env.FRONTEND_URL,
+    credentials: true // para permitir cookies
 })
 
 app.register(jwt, {
