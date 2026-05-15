@@ -1,4 +1,4 @@
-# taskflow-auth
+# TaskFlow - Auth
 
 Aplicação fullstack moderna desenvolvida com foco em aprender autenticação e autorização utilizando JWT + OAuth em uma arquitetura profissional baseada em Next.js e Node.js.
 
