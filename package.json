@@ -4,7 +4,10 @@
   "description": "Aplicação fullstack moderna desenvolvida com foco em aprender autenticação e autorização utilizando JWT + OAuth em uma arquitetura profissional baseada em Next.js e Node.js.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src",
+    "start": "node didst/server.js",
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
