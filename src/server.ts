@@ -1,5 +1,5 @@
-import { app } from "./app";
-import { env } from "./infra/env";
+import { app } from "./app.js";
+import { env } from "./infra/env/index.js";
 
 app.listen({
     port: Number(env.PORT)
