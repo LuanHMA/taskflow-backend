@@ -8,6 +8,11 @@ const envSchema = z.object({
     PORT: z.string("Formato inválido"),
     JWT_SECRET: z.string("Formato inválido"),
     FRONTEND_URL: z.string("Formato inválido"),
+    DATABASE_URL: z.string("Formato inválido"),
+    DATABASE_HOST: z.string("Formato inválido"),
+    DATABASE_USER: z.string("Formato invildo"),
+    DATABASE_PASSWORD: z.string("Formato invildo"),
+    DATABASE_NAME: z.string("Formato invildo"),
 })
 
 const parse = envSchema.safeParse(process.env)
