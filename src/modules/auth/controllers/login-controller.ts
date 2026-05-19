@@ -11,9 +11,16 @@ export class LoginController {
         const user = await this.loginService.execute(body)
 
         const token = await reply.jwtSign({
+            id: user.id
+        }, {
+            sign: { expiresIn: "15min" }
         })
 
-        return reply.status(200).send(user)
+        return reply.status(200).send({
+            message: "Usuário logado com sucesso",
+            token,
+            user
+        })
     }
 
 }
