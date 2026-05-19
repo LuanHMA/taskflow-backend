@@ -271,7 +271,7 @@ export type TasksScalarWhereWithAggregatesInput = {
 
 export type TasksCreateInput = {
   content: string
-  created_at: Date | string
+  created_at?: Date | string
   updated_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutTasksInput
 }
@@ -280,7 +280,7 @@ export type TasksUncheckedCreateInput = {
   id?: number
   content: string
   user_id: number
-  created_at: Date | string
+  created_at?: Date | string
   updated_at?: Date | string
 }
 
@@ -303,7 +303,7 @@ export type TasksCreateManyInput = {
   id?: number
   content: string
   user_id: number
-  created_at: Date | string
+  created_at?: Date | string
   updated_at?: Date | string
 }
 
@@ -413,20 +413,16 @@ export type TasksUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.TasksScalarWhereInput | Prisma.TasksScalarWhereInput[]
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
 export type TasksCreateWithoutUserInput = {
   content: string
-  created_at: Date | string
+  created_at?: Date | string
   updated_at?: Date | string
 }
 
 export type TasksUncheckedCreateWithoutUserInput = {
   id?: number
   content: string
-  created_at: Date | string
+  created_at?: Date | string
   updated_at?: Date | string
 }
 
@@ -470,7 +466,7 @@ export type TasksScalarWhereInput = {
 export type TasksCreateManyUserInput = {
   id?: number
   content: string
-  created_at: Date | string
+  created_at?: Date | string
   updated_at?: Date | string
 }
 

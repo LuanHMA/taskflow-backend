@@ -1,9 +1,8 @@
 import fastify from "fastify";
 import cors from "@fastify/cors"
 import jwt from "@fastify/jwt"
-
 import { env } from "./infra/env/index.js";
-import { prisma } from "./infra/database/connection.js";
+import { errorHandler } from "./shared/errors/error-handler.js";
 
 export const app = fastify()
 
@@ -16,16 +15,4 @@ app.register(jwt, {
     secret: env.JWT_SECRET,
 })
 
-app.get("/", async () => {
-    try{
-        const users = await prisma.user.findMany()
-        return { users }
-    }
-    catch(error){
-        console.log(error)
-    }
-})
-
-app.get("/ping", async () => {
-    return { status: "RODANDO" }
-})
+app.register(errorHandler)
