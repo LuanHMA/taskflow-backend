@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import { BadRequestError } from "../../../shared/errors/domain-errors.js";
 import { SessionMapper } from "../mappers/session-mapper.js";
 import { SessionRepository } from "../repositories/session-repository.js";
@@ -13,10 +14,16 @@ export class RegisterUserService {
             throw new BadRequestError("Usuário ja cadastrado")
         }
 
+        const hashedPassword = await bcrypt.hash(data.password, 10)
+
+        if (!hashedPassword) {
+            throw new BadRequestError("Erro ao criptografar senha")
+        }
+
         const userResult = await this.sessionRepository.register({
             email: data.email,
             name: data.name,
-            password: data.password
+            password: hashedPassword
         })
 
         return SessionMapper.toResponse({
