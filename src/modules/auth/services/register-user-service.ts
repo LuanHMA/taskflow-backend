@@ -26,10 +26,6 @@ export class RegisterUserService {
             password: hashedPassword
         })
 
-        return SessionMapper.toResponse({
-            user: userResult,
-            access_token: "",
-            refresh_token: ""
-        })
+        return SessionMapper.toResponse(userResult)
     }
 }

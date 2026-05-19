@@ -7,11 +7,17 @@ export class RegisterUserController {
 
     async handle(req: FastifyRequest, reply: FastifyReply) {
         const body = registerUserSchema.parse(req.body)
-        const result = await this.registerUserService.execute(body)
+        const user = await this.registerUserService.execute(body)
+
+        const token = await reply.jwtSign({
+            sub: user.id
+        }, {
+            sign: { expiresIn: "15min" }
+        })
 
         return reply.status(201).send({
             message: "Usuário cadastrado com sucesso",
-            ...result
+            token,
         })
     }
 }

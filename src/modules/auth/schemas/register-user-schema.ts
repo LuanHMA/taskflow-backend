@@ -22,8 +22,4 @@ export const registerUserSchema = z.object({
 
 export type RegisterUserInput = z.infer<typeof registerUserSchema>
 
-export type RegisterUserOutput = {
-    user: Omit<User, "password">,
-    access_token: string
-    refresh_token: string
-}
+export type RegisterUserOutput = Omit<User, "password">
