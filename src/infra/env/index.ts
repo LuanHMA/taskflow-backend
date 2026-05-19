@@ -13,6 +13,8 @@ const envSchema = z.object({
     DATABASE_USER: z.string("Formato invildo"),
     DATABASE_PASSWORD: z.string("Formato invildo"),
     DATABASE_NAME: z.string("Formato invildo"),
+    REDIS_HOST: z.string("Formato invildo"),
+    REDIS_PORT: z.string("Formato invildo"),
 })
 
 const parse = envSchema.safeParse(process.env)
