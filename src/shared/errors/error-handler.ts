@@ -14,8 +14,8 @@ export async function globaErrorHandler(app: FastifyInstance) {
 
         if (error instanceof ZodError) {
             return reply.status(400).send({
-                message: 'Houve um erro de validação dos dados',
-                issues: error.flatten().fieldErrors,
+                message: 'Houve um erro na validação dos dados',
+                fields: error.flatten().fieldErrors,
                 code: 'VALIDATION_ERROR',
             })
         }
