@@ -2,17 +2,23 @@ import fastify from "fastify";
 import cors from "@fastify/cors"
 import jwt from "@fastify/jwt"
 import { env } from "./infra/env/index.js";
-import { errorHandler } from "./shared/errors/error-handler.js";
+import { globaErrorHandler } from "./shared/errors/error-handler.js";
+import { routes } from "./routes.js";
 
 export const app = fastify()
 
+globaErrorHandler(app)
+
 app.register(cors, {
     origin: env.FRONTEND_URL,
-    credentials: true // para permitir cookies
+    credentials: true
 })
 
 app.register(jwt, {
     secret: env.JWT_SECRET,
 })
 
-app.register(errorHandler)
+
+app.register(routes, {
+    prefix: "/api"
+})

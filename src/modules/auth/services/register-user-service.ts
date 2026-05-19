@@ -10,7 +10,7 @@ export class RegisterUserService {
         const user = await this.sessionRepository.findByEmail({ email: data.email })
 
         if (user) {
-            throw new BadRequestError("Usuario ja cadastrado")
+            throw new BadRequestError("Usuário ja cadastrado")
         }
 
         const userResult = await this.sessionRepository.register({

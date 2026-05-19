@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { RegisterUserInput, registerUserSchema } from "../schemas/register-user-schema.js";
+import { registerUserSchema } from "../schemas/register-user-schema.js";
 import { RegisterUserService } from "../services/register-user-service.js";
 
 export class RegisterUserController {
@@ -13,6 +13,5 @@ export class RegisterUserController {
             message: "Usuário cadastrado com sucesso",
             ...result
         })
-
     }
 }
