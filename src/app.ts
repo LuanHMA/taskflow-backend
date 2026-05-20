@@ -10,6 +10,8 @@ export const app = fastify()
 
 globaErrorHandler(app)
 
+app.register(cookies)
+
 app.register(cors, {
     origin: env.FRONTEND_URL,
     credentials: true
@@ -18,9 +20,6 @@ app.register(cors, {
 app.register(jwt, {
     secret: env.JWT_SECRET,
 })
-
-app.register(cookies)
-
 
 app.register(routes, {
     prefix: "/api"
