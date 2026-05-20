@@ -9,7 +9,7 @@ export class RefreshTokenRepository {
     async create({ userId }: { userId: UserId }): Promise<RefreshToken> {
         const refreshToken = crypto.randomBytes(64).toString('hex')//Gera um número criptografado com 64 caracteres (padrão para refresh token) e converte o resultado (buffer) para hexadecimal (contem apenas letras e numeros, muito padrão tambem)
         const key = `${this.prefix}${refreshToken}`
-        
+
         const value = JSON.stringify({
             userId,
             createdAt: new Date().toISOString()
@@ -22,7 +22,16 @@ export class RefreshTokenRepository {
 
     async findByRefreshToken({ refreshToken }: { refreshToken: RefreshToken }): Promise<RefreshToken | null> {
         const key = `${this.prefix}${refreshToken}`
-        return await redis.get(key)
+
+        const data = await redis.get(key)
+
+        if (!data) {
+            return null
+        }
+
+        const parsed = JSON.parse(data)
+
+        return parsed.userId
     }
 
     async revoke({ refreshToken }: { refreshToken: RefreshToken }): Promise<void> {
