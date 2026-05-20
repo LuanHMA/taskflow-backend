@@ -2,6 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { registerUserSchema } from "../schemas/register-user-schema.js";
 import { RegisterUserService } from "../services/register-user-service.js";
 import { TokenService } from "../services/token-service.js";
+import { env } from "../../../infra/env/index.js";
 
 export class RegisterUserController {
     constructor(private registerUserService: RegisterUserService, private tokenService: TokenService) { }
@@ -13,8 +14,8 @@ export class RegisterUserController {
         const { accessToken, refreshToken } = await this.tokenService.generateTokens({ userId: user.id, fastify: req.server })
 
         reply.setCookie('refreshToken', refreshToken, {
-            httpOnly: true,
-            secure: true,
+            httpOnly: env.NODE_ENV === 'production',
+            secure: env.NODE_ENV === 'production',
             sameSite: 'strict',
             path: '/auth/refresh',
             maxAge: 60 * 60 * 24 * 7
