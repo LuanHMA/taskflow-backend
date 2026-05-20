@@ -17,7 +17,7 @@ export class RefreshTokenController {
         reply.setCookie('refreshToken', newRefreshToken, refreshTokenOptions)
 
         return reply.status(200).send({
-            message: "Usuário logado com sucesso",
+            message: "Token atualizado com sucesso",
             accessToken,
         })
 
