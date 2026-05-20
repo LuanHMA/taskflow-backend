@@ -6,6 +6,6 @@ export async function verifyToken(req: FastifyRequest, reply: FastifyReply) {
         await req.jwtVerify()
     }
     catch(error){
-        throw new UnauthorizedError("Token inválido")
+        throw new UnauthorizedError("Token inválido ou inexistente")
     }
 }
