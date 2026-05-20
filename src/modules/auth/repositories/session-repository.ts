@@ -1,5 +1,5 @@
 import { prisma } from "../../../infra/database/connection.js";
-import { FindByEmailRepositoryInput, FindByEmailRepositoryOutput, RegisterUserRepositoryInput, RegisterUserRepositoryOutput } from "./types.js";
+import { FindByEmailRepositoryInput, FindByEmailRepositoryOutput, FindByIdRepositoryInput, FindByIdRepositoryOutput, RegisterUserRepositoryInput, RegisterUserRepositoryOutput } from "./types.js";
 
 export class SessionRepository {
     async register(data: RegisterUserRepositoryInput): Promise<RegisterUserRepositoryOutput> {
@@ -24,4 +24,15 @@ export class SessionRepository {
 
         return user
     }
+
+    async findById({ id }: FindByIdRepositoryInput): Promise<FindByIdRepositoryOutput> {
+        const user = await prisma.user.findUnique({
+            where: {
+                id
+            }
+        })
+
+        return user
+    }
+
 }

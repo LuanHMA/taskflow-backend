@@ -1,4 +1,3 @@
-import { User } from "../entities/user.js";
 import { RegisterUserRepositoryOutput } from "../repositories/types.js";
 import { RegisterUserOutput } from "../schemas/register-user-schema.js";
 

@@ -6,7 +6,7 @@ export class TokenService {
     constructor(private refreshTokenRepository: RefreshTokenRepository) { }
 
     async generateTokens({ userId, fastify }: { userId: number, fastify: FastifyInstance }) {
-        const accessToken = fastify.jwt.sign({ id: userId }, { expiresIn: "15min" })
+        const accessToken = fastify.jwt.sign({ userId }, { expiresIn: "15min" })
 
         const refreshToken = await this.refreshTokenRepository.create({ userId })
 

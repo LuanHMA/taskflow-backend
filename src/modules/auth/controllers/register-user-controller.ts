@@ -10,7 +10,7 @@ export class RegisterUserController {
         const user = await this.registerUserService.execute(body)
 
         const token = await reply.jwtSign({
-            sub: user.id
+            userId: user.id
         }, {
             sign: { expiresIn: "15min" }
         })
