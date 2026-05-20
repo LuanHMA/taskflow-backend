@@ -1,6 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { TokenService } from "../services/token-service.js";
 import { refreshTokenCookiesSchema } from "../schemas/refresh-token.schema.js";
+import { refreshTokenOptions } from "../../../shared/constants/refresh-token-options.js";
 
 export class RefreshTokenController {
     constructor(private tokenService: TokenService) { }
@@ -13,13 +14,7 @@ export class RefreshTokenController {
             fastify: req.server
         })
 
-        reply.setCookie('refreshToken', newRefreshToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'strict',
-            path: '/auth/refresh',
-            maxAge: 60 * 60 * 24 * 7
-        })
+        reply.setCookie('refreshToken', newRefreshToken, refreshTokenOptions)
 
         return reply.status(200).send({
             message: "Usuário logado com sucesso",
