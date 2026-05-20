@@ -32,4 +32,8 @@ export class TokenService {
 
         return tokens
     }
+
+    async revoke({ refreshToken }: { refreshToken: string }) {
+        await this.refreshTokenRepository.revoke({ refreshToken })
+    }
 }
