@@ -8,4 +8,5 @@ export function authRoutes(app: FastifyInstance) {
 
     app.post("/register", registerController.handle.bind(registerController))
     app.post("/login", loginController.handle.bind(loginController))
+    app.post("/refresh", () => {})
 }

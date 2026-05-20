@@ -20,7 +20,7 @@ export async function globaErrorHandler(app: FastifyInstance) {
             })
         }
 
-        request.log.error(error)
+        console.log(error)
 
         return reply.status(500).send({
             message: 'Houve um erro interno no servidor',
